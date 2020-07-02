@@ -1,0 +1,186 @@
+
+use utnphones;
+
+//CREATE AND INSERT PROVINCE
+db.createCollection("provinces")
+db.provinces.insert
+{
+	"id_province" : 1,
+	"province_name" : "Buenos Aires"
+               
+} 
+)
+
+//CREATE AND INSERT CITIES
+db.createCollection("cities")
+db.cities.insert(
+{
+
+		"id_city" : 4,
+		"province" :{
+			"id_province" : 1,
+			"province_name" : "Buenos Aires"
+			},
+               "city_name" : "Mar del Plata,
+               "area_code" : "0223",
+               "id_province" : 1
+})
+
+
+//CREATE AND INSERT USERS
+db.createCollection("users")
+db.users.insert(
+   {
+               "id_user" : 2,
+               "name" : "Agustin",
+               "last_name" : "Salvador",
+               "dni" : "42158855",
+               "pwd" : "pwd123",
+               "enabled" : 1,
+               "user_role" : client,
+               "id_city" : 4,
+               "City":{
+			"id_city" :4,
+			"province" :{
+				"id_province" : 1,
+				"province_name" : "Buenos Aires"
+				},
+	               	"city_name" : "Mar del Plata,
+        	       	"area_code" : "0223",
+               		"id_province" : 1
+		}
+   }   
+)
+
+//CREATE AND INSERT TELEPHONE LINES
+db.createCollection("telephone_lines")
+db.telephone_lines.insert(
+   {
+               "id_telephone_line" : "1",
+               "phone_number": "155632037",
+               "type_line": "mobile",
+               "enabled" : "1",
+               "id_user" : "2",
+   }   
+);  
+
+//CREATE AND INSERT TARIFFS
+db.createCollection("tariffs")
+db.tariffs.insert(
+   {
+               "id_tariff" : 1,
+               "id_city_origin" : 4,
+               "id_city_destination" : 1 ,
+               "city_origin" : {
+			"id_city": 4,
+			"province":{
+				"id_province": 1,
+				"province_name": "Buenos Aires"
+				},
+               		"city_name": "Mar del Plata,
+               		"area_code": "0223",
+               		"id_province": 1
+			},
+               "city_destination" : {
+			"id_city" : 1,
+			"province" :{
+				"id_province" : 1,
+				"province_name" : "Buenos Aires"
+				},
+               		"city_name" : "La Plata,
+               		"area_code" : "0221",
+               		"id_province": 1
+				},
+               "cost_price" : 4.5,
+               "price" : 7.5
+   }   
+);  
+
+//CREATE AND INSERT BILLS
+db.createCollection("bills")
+db.bills.insert(
+{
+		"id_bill" : 1,
+               	"count_calls" : 6,
+               	"cost_price" : 240,
+               	"total_price" : 642,
+               	"date_bill" : "2020-06-30 10:00:00",
+               	"expirate_date" : 2020-07-14 10:00:00,
+               	"is_pay" : 0,
+               	"id_telephone_lines" : 1,
+               	"telephone_line" : { 
+			"id_telephone_line" : "1",
+		        "phone_number": "155632037",
+        	       	"type_line" : "mobile",
+               		"enabled" : "1",
+	               	"id_user" : "2",
+			}
+})
+
+//CREATE AND INSERT CALLS
+db.createCollection("calls")
+db.calls.insert(
+{
+		"id_calls" : 3 ,
+               	"duration" : 40,
+               	"cost_price" : 4.5,
+               	"call_price" : 180,
+               	"call_date" : "2020-06-15 18:40:00",
+               	"id_telephone_origin" : 1,
+               	"telephone_origin" : { 
+			"id_telephone_line" : "1",
+		        "phone_number": "155632037",
+        	       	"type_line": "mobile",
+               		"enabled" : "1",
+	               	"id_user" : "2",
+			},
+               	"id_telephone_destination" : 2,
+               	"telephone_destination" : { 
+			"id_telephone_line" : "2",
+		        "phone_number": "155634789",
+        	       	"type_line": "mobile",
+               		"enabled" : "1",
+	               	"id_user" : "3",
+			},
+               	"id_city_origin" : 4,
+               	"city_origin" :{
+			"id_city" :4,
+			"province" : {
+				"id_province" : 1,
+				"province_name" :"Buenos Aires"
+				},
+               		"city_name" : "Mar del Plata,
+               		"area_code" : "0223",
+               		"id_province" : 1
+			} ,
+               	"id_city_destination" : 1,
+               	"city_destination" : {
+			"id_city" : 1,
+			"province" :{
+				"id_province" : 1,
+				"province_name" : "Buenos Aires"
+				},
+               		"city_name" : "La Plata,
+               		"area_code" : "0221",
+               		"id_province" : 1
+				},
+		"billed" : 1 ,
+               	"id_bill" : 1 ,
+               	"bill" : {
+			"id_bill" : 1,
+               		"count_calls" : 6,
+               		"cost_price" : 240,
+               		"total_price" : 642,
+               		"date_bill" : "2020-06-30 10:00:00",
+               		"expirate_date" : "2020-07-14 10:00:00",
+               		"is_pay" : 0,
+               		"id_telephone_lines" : 1,
+               		"telephone_line" : { 
+				"id_telephone_line" : "1",
+		        	"phone_number" : "155632037",
+        	       		"type_line" : "mobile",
+               			"enabled" : "1",
+	               		"id_user" : "2",
+				}
+		}
+})
