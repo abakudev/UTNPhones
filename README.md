@@ -2,7 +2,7 @@
 
 # Trabajo Practico Integrador : Programacion Avanzada I & Base de Datos II 
 
-Build Restful CRUD API for a phonelines company using Spring Boot, Mysql, JPA .
+Build API Restful for a phonelines company using Spring MVC, JPA y Mysql.
 
 ## Steps to Setup
 
